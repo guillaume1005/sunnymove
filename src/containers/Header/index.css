@@ -1,0 +1,8 @@
+#menu div:first-child{
+    flex: 1 !important ;
+}
+
+.p-menuitem-text {
+    color :#000 !important;
+    font-weight: border !important;
+}
