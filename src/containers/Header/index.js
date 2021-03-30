@@ -6,6 +6,15 @@ import Button from '../../components/Button';
 import { labels } from '../../Common/AppTexts';
 import { Colors } from '../../Common/Colors';
 import './index.css';
+import { Link } from 'react-router-dom';
+// import { useHistory } from "react-router-dom";
+// import {BrowserRouter} from 'ReactRouter';
+
+
+// function handleClick() {
+//     let history = useHistory();
+//     history.push("/Login");
+//   }
 
 export default function Header (props) {
 
@@ -25,7 +34,7 @@ export default function Header (props) {
     ];
    
 
-    const start = <img alt="logo" src={Images.logo} height="40" className="p-mr-2"/>;
+    const start = <Link to='/'><img alt="logo" src={Images.logo} height="40" className="p-mr-2" /></Link>;
     const end = <Button style={{backgroundColor: ""}} label='Mes réservations'></Button>
     return (
         <div>
