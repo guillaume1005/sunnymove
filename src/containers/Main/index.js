@@ -1,5 +1,6 @@
 import React, { useState } from 'react' ;
 import Reservation from '../Reservation';
+import Reservationn from '../Reservationn';
 import TravelCard from '../TravelCard';
 // import Login from '../Login';
 import SocialMedias from '../../components/SocialMedias';
@@ -12,11 +13,45 @@ import { BsPersonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import Dropdown from '../../components/Dropdown';
+import { MenuItem, TextField } from '@material-ui/core';
 
 
 
 
 export default function Main (props) {
+    const currencies = [
+        {
+            value: 'AB',
+            label: '1',
+        },
+        {
+            value: 'CD',
+            label: '2',
+        },
+        {
+            value: 'EF',
+            label: '3',
+        },
+        {
+            value: 'GH',
+            label: '4',
+        },
+        {
+            value: 'JPY',
+            label: '5',
+        },
+        {
+            value: 'JPYY',
+            label: '6',
+        },
+    ];
+    
+    const [currency, setCurrency] = React.useState('EUR');
+
+    const handleChangeCur = (event) => {
+        setCurrency(event.target.value);
+    };
 
     const [state, setState] = useState({
         city: "",
@@ -36,6 +71,20 @@ export default function Main (props) {
         modalVisible: false,
         isProfile: false,
     })
+
+    const [depart, setDepart] = useState('');
+    const [arriving, setArriving] = useState('');
+    const [cities, setCities] = useState([
+        {label: "Tunis", value: 'Tunis'},
+        {label: "Athènes", value: 'Athènes'},
+        {label: "Corfou", value: 'Corfou'},
+        {label: "Rhodes", value: "Rhodes"},
+        {label: "Thessalonique", value: "Thessalonique"},
+        {label: "Heraklion", value: "Heraklion"}
+         
+        ])
+    const [departDate, setDepartDate] = useState();
+    const [arrivingDate, setArrivingDate] = useState();
 
 
     const handleChange = (e) => {
@@ -128,12 +177,15 @@ export default function Main (props) {
                                             types={['(regions)']}
                                             componentRestrictions={{country: "in"}}
                                         /> */}
-                    <input type="text" className={`form-control ${style.bed}`}
+                    {/* <input type="text" className={`form-control ${style.bed}`}
                         placeholder="Où allez-vous ?"
                         aria-label="Example text with button addon"
                         aria-describedby="button-addon1"
                         value={state.city} name="city" onChange={handleChange}
-                    />
+                    /> */}
+                    <Dropdown aria-describedby="button-addon1" aria-label="Example text with button addon" className={`form-control ${style.bed}`} value={depart} options={cities} onChange={(e) => setDepart(e.value)} optionLabel="label" filter filterBy="label" placeholder="Aéroport ?" />
+                    {/* <Dropdown aria-describedby="button-addon1" aria-label="Example text with button addon" className={`form-control ${style.bed}`} value={depart} options={cities} onChange={(e) => setDepart(e.value)} optionLabel="label" filter filterBy="label" placeholder="Hotel ?" /> */}
+
                 </div>
 
                 {/* OKKKKK */}
@@ -178,15 +230,32 @@ export default function Main (props) {
                         </button>
                     </div>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                    {/* <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#exampleModal" className={`form-control ${style.user}`}>
-                        {/* {state.num_adults} adulte . {state.num_child} enfants
-                                            . {state.num_rooms} chambre
-                                        </button> before*/}
-                            {state.num_adults} adulte
-                            </button>
 
-                    <div class="modal fade md-5 mt-5" id="exampleModal" tabindex="-10" role="dialog"
+                            {state.num_adults} adulte
+                    </button> */}
+                    <TextField
+                        id="standard-select-currency"
+                        select
+                        label="Nombre"
+                        variant='outlined'
+                        className={`form-control ${style.user}`}
+                        style={{ backgroundColor: 'white'}}
+                        value={currency}
+                        onChange={handleChangeCur}
+                        helperText="Nombre de personnes"
+                        fullWidth
+                    >
+                        {currencies.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                            
+
+                    {/* <div class="modal fade md-5 mt-5" id="exampleModal" tabindex="-10" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered mt-5 mr-5 " role="document">
                             <div class="modal-content">
@@ -228,7 +297,7 @@ export default function Main (props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* <input type="text" className={`form-control ${style.user}`} placeholder=".."
                                         <input type="text" className={`form-control ${style.user}`} placeholder="No. of Persons"
                                                aria-label="Example text with button addon"
@@ -246,8 +315,8 @@ export default function Main (props) {
 
             
            <div className='p-d-flex'>
-                <div className='p-col-5' style={{justifyContent:'center', alignItems:'center', display:'flex', flexDirection:'column'}}>
-                    <Reservation/>
+                <div className='p-col-5' style={{justifyContent:'center', alignItems:'center', display:'flex', flexDirection:'column', marginTop: "-500px"}}>
+                    <Reservationn/>
                     <div style={{marginBottom:20}}>
                     </div>
                     <SocialMedias/>
@@ -266,7 +335,7 @@ export default function Main (props) {
                         <TravelCard title={'Corfou'} />
                     </div>
                     <div style={{ marginBottom: 30 }}>
-                        <TravelCard title={'Corfou'} />
+                        <TravelCard title={'Thessalonique'} />
                     </div>
                 </div>
                 

@@ -7,7 +7,7 @@ export default function Reservation (props) {
 
     const [depart,setDepart] = useState('') ;
     const [arriving, setArriving] = useState('') ;
-    const [cities, setCities] = useState([{label : "Tunis", value:'Tunis'}])
+    const [cities, setCities] = useState([{ label: "Tunis", value: 'Tunis' }, { label: "Tunis", value: 'Tunis' }])
     const [departDate, setDepartDate] = useState() ;
     const [arrivingDate, setArrivingDate] = useState() ;
 

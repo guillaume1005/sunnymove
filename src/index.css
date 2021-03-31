@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(./assets/beut.jpeg);
+  background-size: cover
 
   /* background-color: #a09b9b; */
 
