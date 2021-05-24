@@ -1,4 +1,4 @@
 export const Images = {
     logo : require('../assets/logo.png'),
-    plage : require('../assets/plage.jpeg')
+    plage : require('../assets/plage.png')
 }
