@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Dropdown from '../../components/Dropdown';
 import Button from '../../components/Button';
 import Calendar from '../../components/Calendar';
+import groupImage from "../../assets/big.png"
+import "./index.css"
 
 export default function Reservation(props) {
 
@@ -14,35 +16,30 @@ export default function Reservation(props) {
 
 
     return (
-        <div style={{ backgroundColor: "#FFF", borderRadius: 20, padding: 20, width: '60%' }}>
-
-            {/* <div className="p-inputgroup" style={{ marginBottom: 5 }}>
+		<div
+			style={{
+				backgroundColor: '#F5F5F5',
+				borderRadius: 20,
+				padding: 20,
+				width: '60%',
+				display: 'flex',
+				flexDirection: 'column',
+				cursor: 'pointer',
+			}}
+		>
+			{/* <div className="p-inputgroup" style={{ marginBottom: 5 }}>
                 <span className="p-inputgroup-addon">Depart</span>
 
                 <Dropdown className="p-inputtext-lg" style={{ width: '100%', backgroundColor: '#efefef' }} value={depart} options={cities} onChange={(e) => setDepart(e.value)} optionLabel="label" filter filterBy="label" placeholder="Ville ou Gare" />
             </div> */}
-            <div style={{marginBottom: 5, textAlign: 'center', fontFamily: "Arial", fontSize: 20}}>Les points forts de sunnymove</div>
-            <div className="p-inputgroup" style={{ marginBottom: 5 }}>
-                <span className="p-inputgroup-addon">Ecologique</span>
-                {/* <Dropdown className="p-inputtext-lg" style={{ width: '100%', backgroundColor: '#efefef' }} value={arriving} options={cities} onChange={(e) => setArriving(e.value)} optionLabel="label" filter filterBy="label" placeholder="Ville ou Gare" /> */}
-                <div style={{ marginBottom: 5, textAlign: 'center', fontFamily: "Arial", fontSize: 20 }}>Les points forts de sunnymove</div>
+			<div style={{ marginBottom: 5, textAlign: 'center', fontFamily: 'Arial', fontSize: 20 }}>
+				Qui sommes-nous ?
+			</div>
+			<div style={{ marginBottom: 5, textAlign: 'center', fontFamily: 'Arial', fontSize: 13 }}>
+				Fini le taxi plus cher que l'avion
+			</div>
 
-            </div>
-            <div style={{ marginTop: 30, marginBottom: 5 }} className="p-inputgroup">
-                <span className="p-inputgroup-addon">
-                    <i className="pi pi-calendar"></i>
-                </span>
-                <Calendar className="p-inputtext-lg" placeholder='Aller' style={{ width: '100%', backgroundColor: '#efefef' }} value={departDate} onChange={(e) => setDepartDate(e.value)} />
-            </div>
-            <div className="p-inputgroup" style={{ marginBottom: 5 }}>
-                <span className="p-inputgroup-addon">
-                    <i className="pi pi-calendar"></i>
-                </span>
-                <Calendar className="p-inputtext-lg" placeholder='Retour' style={{ width: '100%', backgroundColor: '#efefef' }} value={arrivingDate} onChange={(e) => setArrivingDate(e.value)} />
-            </div>
-            <div style={{ marginTop: 30 }}>
-                <Button style={{ width: '100%', fontSize: 20, backgroundColor: "#688C67", color: '#fff', borderColor: "#688C67" }} label='Rechercher'></Button>
-            </div>
-        </div>
-    )
+			<img className={'reservation__image'} src={groupImage}></img>
+		</div>
+	);
 }
