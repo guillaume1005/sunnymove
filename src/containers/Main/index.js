@@ -18,7 +18,7 @@ import { MenuItem, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { staysSearchData } from '../../redux/Stays/action';
 import moment from 'moment';
-import Calendar from 'react-calendar';
+import { Images } from '../../Common/Images';
 
 // solved using moment
 
@@ -96,11 +96,16 @@ export default function Main(props) {
 		checkout_date: '',
 		checkout_month: '',
 		checkout_year: '',
-		startDatee: '',
-		endDatee: '',
+		startDate: moment(new Date()), // here we must put moment before new Date
+		endDate: '',
 		modalVisible: false,
 		isProfile: false,
 	});
+
+	const [startDate, setStartDate] = React.useState(moment(new Date()));
+
+	const [endDate, setEndDate] = React.useState(moment().add(3, 'days'));
+
 
 	const [depart, setDepart] = useState('');
 	const [arriving, setArriving] = useState('');
@@ -260,18 +265,19 @@ export default function Main(props) {
 						{/* <Calendar onChange={onChangeDate} value={date} ></Calendar> */}
 						<DateRangePicker
 							className={`form-control ${style.calendar}`}
-							startDate={state.startDatee}
+							startDate={startDate}
 							startDateId="your_unique_start_date_id" // your_unique_start_id
-							endDate={state.endDatee}
+							endDate={endDate}
 							endDateId="your_unique_end_date_id" // your_unique_end_id
 							onDatesChange={({ startDate, endDate }) => {
-								console.log(startDate);
-								let cal_checkin = String(moment(startDate).format('dddd')).split(' ');
+								setStartDate(startDate);
+								setEndDate(endDate);
+								let cal_checkin = String(moment(startDate._d).format('dddd')).split(' ');
 								let cal_checkout = String(moment(endDate).format('dddd')).split(' ');
 								setState({
 									...state,
-									startDatee: startDate,
-									endDatee: endDate,
+									startDate: moment(startDate._d),
+									endDate: endDate,
 									checkin_date: cal_checkin[2],
 									checkin_month: cal_checkin[1],
 									checkin_year: cal_checkin[3],
@@ -402,19 +408,19 @@ export default function Main(props) {
 				</div>
 				<div className="p-col-7">
 					<div style={{ marginBottom: 30 }}>
-						<TravelCard title={'Athènes'} />
+						<TravelCard title={'Athènes'} image={Images.athenes} />
 					</div>
 					<div style={{ marginBottom: 30 }}>
-						<TravelCard title={'Heraklion'} />
+						<TravelCard title={'Heraklion'} image={Images.heraklion} />
 					</div>
 					<div style={{ marginBottom: 30 }}>
-						<TravelCard title={'Rhodes'} />
+						<TravelCard title={'Rhodes'} image={Images.rhodes} />
 					</div>
 					<div style={{ marginBottom: 30 }}>
-						<TravelCard title={'Corfou'} />
+						<TravelCard title={'Corfou'} image={Images.corfou} />
 					</div>
 					<div style={{ marginBottom: 30 }}>
-						<TravelCard title={'Thessalonique'} />
+						<TravelCard title={'Thessalonique'} image={Images.thessalonique} />
 					</div>
 				</div>
 			</div>

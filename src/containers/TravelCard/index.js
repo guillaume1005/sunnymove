@@ -8,7 +8,7 @@ export default function TravelCard (props) {
     return (
         <div style={{borderRadius:20, backgroundColor:'#FFF', display:'flex', flex:1}}>
             <div style={{}}>
-                <img style={{borderTopLeftRadius:20,borderBottomLeftRadius:20, height:'100%'}} src={Images.plage}/>    
+                <img style={{borderTopLeftRadius:20,borderBottomLeftRadius:20, height:200, maxWidth:300 }} src={props.image}/>    
             </div>
             <div style={{flex:1, justifyContent:'center', alignItems:"center", display:'flex', flexDirection:'column'}}>
                 <p style={{fontSize:34}}>
