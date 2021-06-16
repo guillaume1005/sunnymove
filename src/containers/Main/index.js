@@ -15,7 +15,6 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import Dropdown from '../../components/Dropdown';
 import { MenuItem, TextField } from '@material-ui/core';
-import { connect } from 'react-redux';
 import { staysSearchData } from '../../redux/Stays/action';
 import moment from 'moment';
 import { Images } from '../../Common/Images';
